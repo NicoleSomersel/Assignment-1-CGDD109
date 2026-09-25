@@ -302,4 +302,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   speed: 6
-  points: 100
+  points: -15

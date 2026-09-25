@@ -5,13 +5,16 @@ public class Dragonmove : MonoBehaviour
     public float speed = 5;
     private bool goingUp = true;
 
-    private float ratTimer = 0, fireballTimer = 0;
+    private float ratTimer = 0, fireballTimer = 0, lazerTime = 0;
 
     private float ratWait = 3;
     private float fireballwait = 3;
 
+    private float lazerwait = 5;
     public GameObject rat;
     public GameObject fireball;
+
+    public GameObject lazer;
 
 
     // Update is called once per frame
@@ -21,6 +24,7 @@ public class Dragonmove : MonoBehaviour
         //spawning
         ratTimer += Time.deltaTime;
         fireballTimer += Time.deltaTime;
+        
 
         if (ratTimer > ratWait) {
             Instantiate(rat, transform.position, Quaternion.identity);
@@ -33,7 +37,12 @@ public class Dragonmove : MonoBehaviour
             fireballTimer = 0;
             fireballwait = Random.Range(1f, 3f);
         }
-
+        if (lazerTime > lazerwait)
+        {
+            Instantiate(lazer, , Quaternion.identity);
+            lazerTime = 0;
+            lazerwait = Random.Range(1f, 3f);
+        }
 
 
 
