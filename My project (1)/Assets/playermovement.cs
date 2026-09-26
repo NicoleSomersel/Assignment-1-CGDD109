@@ -1,10 +1,10 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playermovement : MonoBehaviour
 {
     public TextMeshProUGUI scoreBox;
-    public TextMeshProUGUI lives;
     public float speed = 4;
     private int score = 0;
     private int health = 3;
@@ -12,7 +12,6 @@ public class playermovement : MonoBehaviour
     private void Start()
     {
         scoreBox.text = "Score: " + score;
-        lives.text = "health: " + health;
     }
 
     // Update is called once per frame
@@ -49,8 +48,11 @@ public class playermovement : MonoBehaviour
             {
                 score += collision.gameObject.GetComponent<Projectile>().points;
                 scoreBox.text = "Score: " + score;
-                health -= collision.gameObject.GetComponent<Projectile>().points;
-                lives.text = health;
+                health -= 1;
+                if (health <= 0)
+                {
+                    Application.Quit();
+                }
             }
         }
         Destroy(collision.gameObject);

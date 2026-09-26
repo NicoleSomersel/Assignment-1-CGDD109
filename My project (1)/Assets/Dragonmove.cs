@@ -1,9 +1,11 @@
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Dragonmove : MonoBehaviour
 {
     public float speed = 5;
     private bool goingUp = true;
+    private float xpos;
 
     private float ratTimer = 0, fireballTimer = 0, lazerTime = 0;
 
@@ -11,6 +13,7 @@ public class Dragonmove : MonoBehaviour
     private float fireballwait = 3;
 
     private float lazerwait = 5;
+
     public GameObject rat;
     public GameObject fireball;
 
@@ -24,7 +27,8 @@ public class Dragonmove : MonoBehaviour
         //spawning
         ratTimer += Time.deltaTime;
         fireballTimer += Time.deltaTime;
-        
+        lazerTime += Time.deltaTime;
+
 
         if (ratTimer > ratWait) {
             Instantiate(rat, transform.position, Quaternion.identity);
@@ -39,7 +43,9 @@ public class Dragonmove : MonoBehaviour
         }
         if (lazerTime > lazerwait)
         {
-            Instantiate(lazer, , Quaternion.identity);
+            xpos = Random.Range(-8, 8);
+            Vector3 pos = new Vector3(xpos, 3f, 0f);
+            Instantiate(lazer, pos, Quaternion.identity);
             lazerTime = 0;
             lazerwait = Random.Range(1f, 3f);
         }
