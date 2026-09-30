@@ -7,8 +7,6 @@ public class playermovement : MonoBehaviour
     public TextMeshProUGUI scoreBox;
     public float speed = 4;
     private int score = 0;
-    private int health = 3;
-
     private void Start()
     {
         scoreBox.text = "Score: " + score;
@@ -48,11 +46,6 @@ public class playermovement : MonoBehaviour
             {
                 score += collision.gameObject.GetComponent<Projectile>().points;
                 scoreBox.text = "Score: " + score;
-                health -= 1;
-                if (health <= 0)
-                {
-                    Application.Quit();
-                }
             }
         }
         Destroy(collision.gameObject);
