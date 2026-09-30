@@ -5,7 +5,7 @@ public class Dragonmove : MonoBehaviour
 {
     public float speed = 5;
     private bool goingUp = true;
-    private float xpos=100;
+    private float xpos=0;
 
     private float ratTimer = 0, fireballTimer = 0, lazerTime = 0;
 
@@ -44,7 +44,7 @@ public class Dragonmove : MonoBehaviour
         if (lazerTime > lazerwait)
         {
             xpos = Random.Range(2, 4);
-            Vector3 pos = new Vector3(xpos, 1f, 0f);
+            Vector3 pos = new Vector3(xpos, 0, 1);
             Instantiate(lazer, pos, Quaternion.identity);
             lazerTime = 0;
             lazerwait = Random.Range(1f, 12f);
