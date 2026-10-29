@@ -849,6 +849,8 @@ MonoBehaviour:
   heart: {fileID: 3624688078583146473, guid: 16fc725af51bcf948bdfeef0f8f395b2, type: 3}
   HeartContainer: {fileID: 78790872}
   lives: 3
+  protection: 0
+  maxprotection: 3
 --- !u!95 &2038782000
 Animator:
   serializedVersion: 7

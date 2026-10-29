@@ -13,6 +13,9 @@ public class Galagamovement : MonoBehaviour
     public GameObject HeartContainer;
 
     public int lives = 3;
+
+    public int protection = 0; //starting with none
+    public int maxprotection = 5; //for power collection originally set to like 3 but i'm changing it to 5 lowkey
     void Start()
     {
         while (HeartContainer.transform.childCount < lives)
@@ -61,25 +64,40 @@ public class Galagamovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("enemybullet"))
         {
-            if (HeartContainer.transform.childCount > 0)
+            if (protection > 0)
             {
-                Destroy(HeartContainer.transform.GetChild(HeartContainer.transform.childCount - 1).gameObject);
+                protection = protection - 1;
+            }
+            else
+            {
+                if (HeartContainer.transform.childCount > 0)
+                {
+                    Destroy(HeartContainer.transform.GetChild(HeartContainer.transform.childCount - 1).gameObject);
+                }
             }
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Galagaship"))
         {
-            if (HeartContainer.transform.childCount > 0)
+            if (protection > 0)
             {
-                Destroy(HeartContainer.transform.GetChild(HeartContainer.transform.childCount - 1).gameObject);
+                protection = protection - 1;
             }
-            if (HeartContainer.transform.childCount <= 0)
+            else
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                if (HeartContainer.transform.childCount > 0)
+                {
+                    Destroy(HeartContainer.transform.GetChild(HeartContainer.transform.childCount - 1).gameObject);
+                }
+                if (HeartContainer.transform.childCount <= 0)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
             }
         }
         else if (collision.gameObject.CompareTag("powerup"))
         {
+            protection = maxprotection; //for when powerup is collected set it so that it equals the number of hits player can take before damage is taken.
             if (HeartContainer.transform.childCount < 3)
             {
                 Instantiate(heart, HeartContainer.transform); //Surely this does the opposite of Destroy and gives the player back one health no?
