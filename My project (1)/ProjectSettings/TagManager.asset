@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Projectile
+  - Galagaplayer
+  - Galagaship
+  - enemybullet
+  - Playerbullet
+  - powerup
   layers:
   - Default
   - TransparentFX
