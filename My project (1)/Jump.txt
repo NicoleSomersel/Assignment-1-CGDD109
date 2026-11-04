@@ -1,0 +1,20 @@
+Jump
+
+Create new clip for jump animation
+
+create bool parameter isJumping
+
+make sure can transition to self, exit transition, and transition duration is unchecked
+
+check isJumping is true
+
+Create transition back to idle and run
+make sure can transition to self, exit transition, and transition duration is unchecked
+ 
+if isJumping is false and speed is < 0.01 for idle
+if isJumping is false and speed is > 0.01 for idle
+
+
+in playerscript in void Update()
+
+animator.SetBool("IsJumping", !isGrounded);

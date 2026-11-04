@@ -1,0 +1,48 @@
+enemy control script
+
+create square name it enemy
+
+slime purple for sprite 4x3 cell count
+
+drag in fifth frame for enemy
+add rigid body 2d freeze z position
+add capsule collider 2d
+
+create empty name it pointleft and pointright
+
+patrollingenemy script
+
+
+private RigidBody2D rb;
+private SpriteRender sprite;
+
+public Transform pointLEFT;
+public Transform pointRIGHT;
+public float speed 5f;
+
+private Transform currentPoint;
+
+void Start()
+{
+	rb = GetComponet<RigidBody2D>();
+	sprite = GetComponent<SpriteRender>();
+	currentPoint = pointRight;
+}
+
+void Update()
+{
+	//Vector2 point = currentPoint.position - transform.position;
+	if(currentPoint == pointRIGHT) rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y)
+	else rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
+	if(Vector2.Distance( transform.position, currentPoint.position)< .5f)
+	{
+		if(currentPoint == pointRIGHT)
+		{
+			currentPoint = pointLEFT; sprite.flipX = true;
+		}
+		else
+		{
+			currentPoint == pointRigiht; sprite.flipX = false;
+		}
+	}
+}
