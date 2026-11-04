@@ -1,0 +1,33 @@
+create animation on player
+
+
+25 frames of idle animation
+
+Create new clip do the same for knight8-23 run animation about 75 frames
+
+
+Define float parameter for speed
+remove exit time
+ and transition duration
+add condition that speed is > 0.01
+
+Do same thing for idle state but speed is < 0.01
+
+
+in player script
+
+private Animator animation
+private SpriteRender sprite
+
+void Start()
+{
+	animator = GetComponent<Animator>();
+	sprite = GetComponent<SpriteRender>();
+}
+
+in void Update()
+{
+	if(moveDir <0) sprite.flipX = true;
+	else if (moveDir > 0) sprite.flipX = false;
+	animator.SetFloat("speed", MathF.Abs(rb.linearVelocity.x));
+}
